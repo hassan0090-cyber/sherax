@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary Shazii &amp; Taboo ❤️</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <style>
+        :root {
+            --pink-light: #ffe4ec;
+            --pink-mid: #ffb3c6;
+            --pink-deep: #fb6f92;
+            --rose-gold: #e09f93;
+            --gold: #d4af37;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #fff0f5 0%, #ffc2d1 50%, #ff8fab 100%);
+            min-height: 100vh;
+            user-select: none;
+        }
+
+        .font-script {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .font-serif-elegant {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Floating Hearts Background */
+        .floating-hearts-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-heart {
+            position: absolute;
+            bottom: -50px;
+            color: rgba(255, 255, 255, 0.55);
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.6; }
+            100% { transform: translateY(-110vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* Page Transitions */
+        .page-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-section.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism Card */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 22px 55px rgba(219, 39, 119, 0.22);
+        }
+
+        /* ================= PAGE 1: MODERN DUAL-SECURITY VAULT (PIN + FINGERPRINT) ================= */
+        .modern-vault-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 228, 236, 0.88));
+            border: 2px solid #fbcfe8;
+            box-shadow: 0 25px 60px rgba(190, 24, 93, 0.25), inset 0 1px 0 rgba(255,255,255,0.9);
+        }
+
+        .pin-digit-box {
+            width: 52px;
+            height: 62px;
+            border-radius: 14px;
+            background: linear-gradient(180deg, #fff 0%, #fff1f2 100%);
+            border: 2px solid #f43f5e;
+            box-shadow: inset 0 2px 6px rgba(244, 63, 94, 0.15), 0 6px 14px rgba(244, 63, 94, 0.15);
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: #9f1239;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+        }
+
+        .pin-digit-box.verified {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-color: #34d399;
+            color: #ffffff;
+            transform: scale(1.06);
+        }
+
+        .keypad-btn {
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1.5px solid #fecdd3;
+            font-weight: 600;
+            font-size: 18px;
+            color: #881337;
+            box-shadow: 0 4px 10px rgba(225, 29, 72, 0.1);
+            transition: all 0.15s ease;
+        }
+
+        .keypad-btn:hover {
+            background: #ffe4e6;
+            border-color: #fb7185;
+            transform: translateY(-1px);
+        }
+
+        .keypad-btn:active {
+            transform: scale(0.93);
+            background: #f43f5e;
+            color: white;
+        }
+
+        /* Biometric Fingerprint Sensor */
+        .fingerprint-pad {
+            position: relative;
+            width: 112px;
+            height: 112px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #fff1f2, #ffe4e6 65%, #fecdd3 100%);
+            border: 3px solid #fb7185;
+            box-shadow: 0 10px 30px rgba(225, 29, 72, 0.25), inset 0 0 18px rgba(244, 63, 94, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
+
+        .fingerprint-pad.locked-sensor {
+            opacity: 0.45;
+            filter: grayscale(0.6);
+            cursor: not-allowed;
+        }
+
+        .fingerprint-pad.ready-sensor {
+            opacity: 1;
+            filter: none;
+            animation: sensorPulse 1.8s infinite ease-in-out;
+        }
+
+        @keyframes sensorPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.5), 0 10px 25px rgba(225, 29, 72, 0.3); }
+            50% { box-shadow: 0 0 0 14px rgba(244, 63, 94, 0), 0 10px 25px rgba(225, 29, 72, 0.3); }
+        }
+
+        .scan-laser {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #e11d48, #fbbf24, #e11d48, transparent);
+            box-shadow: 0 0 12px #e11d48;
+            top: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .fingerprint-pad.scanning .scan-laser {
+            opacity: 1;
+            animation: laserSweep 1.1s linear infinite;
+        }
+
+        @keyframes laserSweep {
+            0% { top: 8%; }
+            50% { top: 90%; }
+            100% { top: 8%; }
+        }
+
+        @keyframes shakeLock {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-10px) rotate(-1.5deg); }
+            40% { transform: translateX(10px) rotate(1.5deg); }
+            60% { transform: translateX(-8px); }
+            80% { transform: translateX(8px); }
+        }
+
+        .shake-animation {
+            animation: shakeLock 0.45s ease-in-out;
+        }
+
+        /* ================= PAGE 3: 3D FLIP CARDS ================= */
+        .flip-card {
+            perspective: 1200px;
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 22px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 30px rgba(219, 39, 119, 0.18);
+        }
+
+        .flip-card-front {
+            background: linear-gradient(135deg, #ff758f 0%, #ff4d6d 100%);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #ffffff 0%, #fff0f5 100%);
+            color: #881337;
+            transform: rotateY(180deg);
+            border: 2px solid #f43f5e;
+        }
+
+        /* ================= PAGE 4: CAKE & CUTTING ANIMATION ================= */
+        .cake-stage {
+            position: relative;
+            width: 320px;
+            height: 310px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .candle-flame {
+            animation: flicker 0.9s infinite alternate ease-in-out;
+            transform-origin: bottom center;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-3deg); opacity: 0.95; }
+            50% { transform: scale(1.12) rotate(3deg); opacity: 1; }
+            100% { transform: scale(0.95) rotate(-2deg); opacity: 0.9; }
+        }
+
+        .knife-icon {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 38px;
+            color: #9f1239;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+            animation: knifeHover 1.6s infinite ease-in-out;
+            z-index: 25;
+            pointer-events: none;
+            transition: all 0.6s ease;
+        }
+
+        @keyframes knifeHover {
+            0%, 100% { transform: translateY(0) rotate(-35deg); }
+            50% { transform: translateY(-12px) rotate(-42deg); }
+        }
+
+        .knife-cutting {
+            animation: none !important;
+            transform: translate(-110px, 85px) rotate(-65deg) !important;
+        }
+
+        /* Cake Slice gliding onto Plate */
+        .cake-slice-group {
+            transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
+        }
+
+        .cake-cut .cake-slice-group {
+            transform: translate(118px, 68px) scale(0.88);
+        }
+
+        .porcelain-plate {
+            opacity: 0;
+            transform: translateX(40px) scale(0.8);
+            transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .cake-cut .porcelain-plate {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+
+        /* ================= PAGE 5: 10-PHOTO SLIDER & ROTATE ================= */
+        .photo-card-perspective {
+            perspective: 1200px;
+        }
+
+        .photo-rotatable {
+            transition: transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .photo-rotatable.is-rotated {
+            transform: rotateY(360deg) scale(1.05);
+        }
+
+        /* ================= PAGE 7: FLOATING BALLOONS & GIFT BOX ================= */
+        .balloon-container {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            animation: balloonBob 3.2s ease-in-out infinite;
+        }
+
+        .balloon-container:nth-child(2) { animation-delay: 0.6s; }
+        .balloon-container:nth-child(3) { animation-delay: 1.2s; }
+        .balloon-container:nth-child(4) { animation-delay: 1.8s; }
+
+        .balloon-container:hover {
+            transform: scale(1.12) translateY(-8px);
+        }
+
+        @keyframes balloonBob {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-16px) rotate(2deg); }
+        }
+
+        @keyframes popOut {
+            0% { transform: scale(1); opacity: 1; }
+            40% { transform: scale(1.45); opacity: 0.8; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .balloon-popped {
+            animation: popOut 0.45s forwards ease-out !important;
+            pointer-events: none;
+        }
+
+        @keyframes giftReveal {
+            0% { transform: scale(0.3) translateY(40px); opacity: 0; }
+            60% { transform: scale(1.05) translateY(-6px); opacity: 1; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        .gift-reveal-anim {
+            animation: giftReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* Custom Scrollbar for Love Letter */
+        .letter-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .letter-scroll::-webkit-scrollbar-thumb {
+            background: #fb7185;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-rose-950 antialiased selection:bg-rose-300 selection:text-rose-900">
+
+    <!-- =====================================================================
+         LOCAL BACKGROUND AUDIO FILE: Place "song1.mp3" in the same folder
+    ====================================================================== -->
+    <audio id="bg-music" src="song1.mp3" loop preload="auto"></audio>
+
+    <!-- Floating Ambient Hearts -->
+    <div class="floating-hearts-bg" id="heartsBg"></div>
+
+    <!-- Top Floating Audio Controller -->
+    <div class="fixed top-4 right-4 z-50 flex items-center gap-2">
+        <!-- Play / Pause Romantic Music Button -->
+        <button id="musicToggleBtn"
+                class="bg-gradient-to-r from-rose-500 to-pink-600 text-white px-4 py-2 rounded-full shadow-lg border border-pink-300 text-xs sm:text-sm font-medium flex items-center gap-2 transition transform hover:scale-105">
+            <i id="musicIcon" class="fa-solid fa-music"></i>
+            <span id="musicLabel">Play Music</span>
+        </button>
+    </div>
+
+    <!-- Step Progress Indicator (1 to 10) -->
+    <div id="stepIndicator" class="fixed top-4 left-4 z-40 bg-white/85 backdrop-blur-md px-3.5 py-1.5 rounded-full shadow-md border border-rose-200 text-xs font-semibold text-rose-700 flex items-center gap-2">
+        <span>Page <span id="currentStepNum">1</span> / 10 ❤️</span>
+        <div class="w-16 sm:w-24 h-1.5 bg-rose-100 rounded-full overflow-hidden">
+            <div id="topProgressBar" class="h-full bg-gradient-to-r from-rose-500 to-pink-500 transition-all duration-500" style="width: 10%;"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Box (Replaces alert()) -->
+    <div id="toastBox" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-rose-900/95 text-white px-5 py-3 rounded-2xl shadow-2xl text-sm font-medium opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2.5 max-w-[90vw] text-center">
+        <i class="fa-solid fa-heart text-pink-400"></i>
+        <span id="toastMessage">Message here</span>
+    </div>
+
+    <!-- =====================================================================
+         PAGE 1: MODERN DUAL-SECURITY LOCK (PIN 0909 + FINGERPRINT SCANNER)
+    ====================================================================== -->
+    <section id="page1" class="page-section active min-h-screen w-full flex-col items-center justify-center px-4 py-16">
+        <div id="modernLockCard" class="modern-vault-card max-w-md w-full rounded-3xl p-6 sm:p-8 text-center">
+            <div class="inline-flex items-center gap-2 bg-pink-100 text-rose-700 px-4 py-1 rounded-full text-xs font-semibold tracking-wide uppercase mb-2 border border-pink-200">
+                <i class="fa-solid fa-shield-heart text-rose-500"></i> Shazii &amp; Taboo Smart Vault
+            </div>
+
+            <h1 class="font-script text-5xl sm:text-6xl text-rose-600 mb-1 drop-shadow-sm">
+                Taboo
+            </h1>
+            <p class="text-xs sm:text-sm text-rose-800/80 mb-5">
+                Step 1: Enter Code <strong>0909</strong> &bull; Step 2: Scan Fingerprint
+            </p>
+
+            <!-- 4-Digit Modern PIN Display (Pre-filled 1-2-3-4) -->
+            <div class="flex items-center justify-center gap-3 mb-4" id="pinDisplayRow">
+                <div class="pin-digit-box" id="pin-box-0">1</div>
+                <div class="pin-digit-box" id="pin-box-1">2</div>
+                <div class="pin-digit-box" id="pin-box-2">3</div>
+                <div class="pin-digit-box" id="pin-box-3">4</div>
+            </div>
+
+            <!-- Compact Numeric Keypad -->
+            <div id="keypadSection" class="grid grid-cols-3 gap-2 max-w-[250px] mx-auto mb-5">
+                <button type="button" class="keypad-btn" onclick="pressKey('1')">1</button>
+                <button type="button" class="keypad-btn" onclick="pressKey('2')">2</button>
+                <button type="button" class="keypad-btn" onclick="pressKey('3')">3</button>
+                <button type="button" class="keypad-btn" onclick="pressKey('4')">4</button>
+                <button type="button" class="keypad-btn" onclick="pressKey('5')">5</button>
+                <button type="button" class="keypad-btn" onclick="pressKey('6')">6</button>
+                <button type="button" class="keypad-btn" onclick="pressKey('7')">7</button>
+                <button type="button" class="keypad-btn" onclick="pressKey('8')">8</button>
+                <button type="button" class="keypad-btn" onclick="pressKey('9')">9</button>
+                <button type="button" class="keypad-btn text-xs text-rose-600" onclick="clearPin()">CLR</button>
+                <button type="button" class="keypad-btn" onclick="pressKey('0')">0</button>
+                <button type="button" class="keypad-btn text-sm text-rose-600" onclick="backspacePin()"><i class="fa-solid fa-delete-left"></i></button>
+            </div>
+
+            <!-- Biometric Fingerprint Scanner Section -->
+            <div class="pt-4 border-t border-rose-200/80 flex flex-col items-center">
+                <div id="fingerprintSensor"
+                     class="fingerprint-pad locked-sensor"
+                     onmousedown="startFingerprintScan()"
+                     onmouseup="stopFingerprintScan()"
+                     onmouseleave="stopFingerprintScan()"
+                     ontouchstart="startFingerprintScan(event)"
+                     ontouchend="stopFingerprintScan()"
+                     onclick="quickFingerprintTap()">
+                    <div class="scan-laser"></div>
+                    <i id="fingerprintIcon" class="fa-solid fa-fingerprint text-5xl text-rose-600 transition-colors duration-300"></i>
+                </div>
+
+                <!-- Scan Progress Bar -->
+                <div class="w-40 h-1.5 bg-rose-100 rounded-full overflow-hidden mt-3">
+                    <div id="scanProgressBar" class="h-full bg-gradient-to-r from-rose-500 to-emerald-500 w-0 transition-all duration-100"></div>
+                </div>
+
+                <p id="biometricStatus" class="text-xs font-medium text-rose-700 mt-2">
+                    <i class="fa-solid fa-lock mr-1"></i> Enter PIN <strong>0909</strong> to activate Fingerprint Sensor
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 2: HEARTFELT WELCOME & APOLOGY INTRO ("NARAZGI KHATAM")
+    ====================================================================== -->
+    <section id="page2" class="page-section min-h-screen w-full flex-col items-center justify-center px-4 py-16">
+        <div class="glass-panel max-w-xl w-full rounded-3xl p-7 sm:p-10 text-center">
+            <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-tr from-rose-500 to-pink-400 text-white flex items-center justify-center text-4xl shadow-lg animate-pulse">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+
+            <span class="inline-block bg-rose-100 text-rose-700 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+                Happy Anniversary My Life
+            </span>
+
+            <h2 class="font-script text-5xl sm:text-6xl text-rose-600 mb-3">
+                Meri Pyaari Taboo
+            </h2>
+
+            <p class="font-serif-elegant text-base sm:text-lg text-rose-950 leading-relaxed mb-4">
+                "Aaj hamari mohabbat aur hamare saath ka ek aur khoobsurat saal mukammal ho gaya hai..."
+            </p>
+
+            <p class="text-sm sm:text-base text-rose-900/85 leading-relaxed mb-7">
+                Agar kabhi meri kisi baat se tum naraz hui ho, toh aaj is pyaare se din par apna saara gussa chhod do meri jaan. Ye choti si duniya sirf tumhari muskurahat ke liye banayi hai.
+            </p>
+
+            <button onclick="goToPage(3)"
+                    class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white font-semibold shadow-xl hover:shadow-2xl transition transform hover:scale-105 inline-flex items-center gap-2">
+                <span>Start Your Surprise Journey</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 3: 4 INTERACTIVE FLIP WISH CARDS
+    ====================================================================== -->
+    <section id="page3" class="page-section min-h-screen w-full flex-col items-center justify-center px-4 py-16">
+        <div class="max-w-4xl w-full text-center">
+            <span class="inline-block bg-white/85 text-rose-600 px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-2 shadow-sm">
+                Tap Each Card to Turn ❤️
+            </span>
+            <h2 class="font-script text-5xl sm:text-6xl text-rose-700 mb-2">
+                4 Wishes Straight From My Heart
+            </h2>
+            <p class="text-sm sm:text-base text-rose-900/80 mb-8 max-w-xl mx-auto">
+                Har card par click karein, meri jaan — har ek mein mere dil ki ek pyaari si dua chhupi hai.
+            </p>
+
+            <!-- 4 Flip Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+                <!-- Card 1 -->
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="w-14 h-14 rounded-full bg-white/25 flex items-center justify-center mb-3 text-2xl">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                            </div>
+                            <h3 class="font-serif-elegant text-xl font-bold mb-1">Card #1</h3>
+                            <p class="text-xs text-pink-100">Tap to open wish</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <i class="fa-solid fa-crown text-amber-500 text-2xl mb-2"></i>
+                            <h4 class="font-serif-elegant font-bold text-base text-rose-700 mb-1.5">Happy Anniversary!</h4>
+                            <p class="text-xs sm:text-sm leading-relaxed text-rose-900">
+                                Tum meri zindagi ki sabse khoobsurat khushi ho Taboo. Tumhare saath guzra har lamha mere liye jannat jaisa hai.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="w-14 h-14 rounded-full bg-white/25 flex items-center justify-center mb-3 text-2xl">
+                                <i class="fa-solid fa-hand-holding-heart"></i>
+                            </div>
+                            <h3 class="font-serif-elegant text-xl font-bold mb-1">Card #2</h3>
+                            <p class="text-xs text-pink-100">Tap to open wish</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <i class="fa-solid fa-face-smile-beam text-rose-500 text-2xl mb-2"></i>
+                            <h4 class="font-serif-elegant font-bold text-base text-rose-700 mb-1.5">Kabhi Naraz Na Hona</h4>
+                            <p class="text-xs sm:text-sm leading-relaxed text-rose-900">
+                                Agar kabhi meri kisi baat se dil dukha ho toh dil se maafi chahta hoon. Tumhari ek muskurahat meri poori duniya roshan kar deti hai.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="w-14 h-14 rounded-full bg-white/25 flex items-center justify-center mb-3 text-2xl">
+                                <i class="fa-solid fa-infinity"></i>
+                            </div>
+                            <h3 class="font-serif-elegant text-xl font-bold mb-1">Card #3</h3>
+                            <p class="text-xs text-pink-100">Tap to open wish</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <i class="fa-solid fa-ring text-amber-500 text-2xl mb-2"></i>
+                            <h4 class="font-serif-elegant font-bold text-base text-rose-700 mb-1.5">Hamesha Ka Saath</h4>
+                            <p class="text-xs sm:text-sm leading-relaxed text-rose-900">
+                                Har mod par, har khushi aur gham mein, main hamesha tumhara haath thaam kar chalunga. You are my forever &amp; always.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="w-14 h-14 rounded-full bg-white/25 flex items-center justify-center mb-3 text-2xl">
+                                <i class="fa-solid fa-sparkles"></i>
+                            </div>
+                            <h3 class="font-serif-elegant text-xl font-bold mb-1">Card #4</h3>
+                            <p class="text-xs text-pink-100">Tap to open wish</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <i class="fa-solid fa-heart text-rose-600 text-2xl mb-2"></i>
+                            <h4 class="font-serif-elegant font-bold text-base text-rose-700 mb-1.5">Meri Jaan, Meri Queen</h4>
+                            <p class="text-xs sm:text-sm leading-relaxed text-rose-900">
+                                Allah hamesha hamare pyaar ko salamat rakhe aur hamari jodi ko buri nazar se bachaye. I love you endlessly!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Page Button -->
+            <button onclick="goToPage(4)"
+                    class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-pink-500 text-white font-semibold shadow-xl hover:shadow-2xl transition transform hover:scale-105 inline-flex items-center gap-2">
+                <span>Let's Cut Our Anniversary Cake</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 4: INTERACTIVE CAKE CUTTING (Sheraz & Zunaira)
+    ====================================================================== -->
+    <section id="page4" class="page-section min-h-screen w-full flex-col items-center justify-center px-4 py-14">
+        <div class="glass-panel max-w-lg w-full rounded-3xl p-6 sm:p-8 text-center">
+            <!-- Top Header Prompt -->
+            <div class="inline-flex items-center gap-2 bg-rose-100 text-rose-700 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-2 border border-rose-200 animate-bounce">
+                <i class="fa-solid fa-utensils"></i> Cut the Cake
+            </div>
+
+            <h2 class="font-script text-4xl sm:text-5xl text-rose-600 mb-1">
+                Happy Anniversary!
+            </h2>
+            <p class="text-xs sm:text-sm text-rose-800/80 mb-4">
+                Cake par click karein taake pehla meetha piece plate mein aaye 🎂
+            </p>
+
+            <!-- Interactive SVG Cake & Plate -->
+            <div id="cakeStage" class="cake-stage" onclick="cutTheCake()">
+                <!-- Animated Knife -->
+                <div id="cakeKnife" class="knife-icon">
+                    <i class="fa-solid fa-kitchen-set"></i>
+                </div>
+
+                <svg viewBox="0 0 360 320" class="w-full h-full overflow-visible">
+                    <!-- Main Cake Stand -->
+                    <ellipse cx="145" cy="272" rx="115" ry="16" fill="#fbcfe8" stroke="#f472b6" stroke-width="2"/>
+                    <rect x="132" y="272" width="26" height="24" rx="4" fill="#f9a8d4"/>
+                    <ellipse cx="145" cy="298" rx="60" ry="10" fill="#f472b6"/>
+
+                    <!-- Bottom Tier -->
+                    <path d="M 45 205 L 45 262 C 45 274, 245 274, 245 262 L 245 205 Z" fill="#ff758f"/>
+                    <ellipse cx="145" cy="205" rx="100" ry="20" fill="#ff8fa3"/>
+                    <!-- Bottom Frosting Drips -->
+                    <path d="M 45 205 Q 60 228 75 208 Q 90 232 105 208 Q 120 230 135 208 Q 150 234 165 208 Q 180 228 195 208 Q 210 230 225 208 Q 238 225 245 205 Z" fill="#fff0f5"/>
+
+                    <!-- Top Tier -->
+                    <path d="M 72 135 L 72 195 C 72 205, 218 205, 218 195 L 218 135 Z" fill="#ffb3c1"/>
+                    <ellipse cx="145" cy="135" rx="73" ry="16" fill="#ffe5ec"/>
+                    <!-- Top Frosting Drips -->
+                    <path d="M 72 135 Q 86 155 100 138 Q 115 158 130 138 Q 145 160 160 138 Q 175 156 190 138 Q 205 154 218 135 Z" fill="#ffffff"/>
+
+                    <!-- Names Written on Cake Frosting -->
+                    <rect x="76" y="226" width="138" height="28" rx="14" fill="rgba(255,255,255,0.92)" stroke="#fb7185" stroke-width="1.5"/>
+                    <text x="145" y="245" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="22" font-weight="bold" fill="#be123c">
+                        Shazii &amp; Taboo
+                    </text>
+
+                    <!-- Decorative Hearts on Cake -->
+                    <text x="108" y="182" font-size="14" fill="#e11d48">❤️</text>
+                    <text x="138" y="185" font-size="16" fill="#be123c">💖</text>
+                    <text x="168" y="182" font-size="14" fill="#e11d48">❤️</text>
+
+                    <!-- Candles -->
+                    <g transform="translate(115, 92)">
+                        <rect x="0" y="14" width="8" height="30" rx="3" fill="#fde047" stroke="#eab308"/>
+                        <path class="candle-flame" d="M 4 0 Q 10 8 4 14 Q -2 8 4 0 Z" fill="#f97316"/>
+                    </g>
+                    <g transform="translate(141, 86)">
+                        <rect x="0" y="14" width="8" height="34" rx="3" fill="#f43f5e" stroke="#be123c"/>
+                        <path class="candle-flame" d="M 4 0 Q 10 8 4 14 Q -2 8 4 0 Z" fill="#f59e0b"/>
+                    </g>
+                    <g transform="translate(167, 92)">
+                        <rect x="0" y="14" width="8" height="30" rx="3" fill="#fde047" stroke="#eab308"/>
+                        <path class="candle-flame" d="M 4 0 Q 10 8 4 14 Q -2 8 4 0 Z" fill="#f97316"/>
+                    </g>
+
+                    <!-- Porcelain Plate (Appears on Right when Cut) -->
+                    <g class="porcelain-plate" transform="translate(230, 215)">
+                        <ellipse cx="62" cy="48" rx="58" ry="15" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+                        <ellipse cx="62" cy="46" rx="42" ry="9" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+                    </g>
+
+                    <!-- Cut Cake Slice that glides onto the plate -->
+                    <g class="cake-slice-group">
+                        <polygon points="150,185 208,175 208,218 150,232" fill="#ff4d6d" stroke="#fff0f5" stroke-width="1.5"/>
+                        <polygon points="150,185 182,165 208,175" fill="#ffe5ec" stroke="#ffb3c1" stroke-width="1"/>
+                        <line x1="150" y1="208" x2="208" y2="196" stroke="#ffffff" stroke-width="3"/>
+                        <circle cx="182" cy="171" r="5" fill="#be123c"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Wish Box Shown After Cake Cut -->
+            <div id="cakeWishBanner" class="hidden mt-3 p-4 rounded-2xl bg-gradient-to-r from-pink-100 via-rose-50 to-pink-100 border border-rose-300 shadow-inner">
+                <p class="font-serif-elegant font-bold text-rose-700 text-base mb-1">
+                    🎉 Happy Anniversary Shazii &amp; Taboo! 🎉
+                </p>
+                <p class="text-xs sm:text-sm text-rose-900 mb-3">
+                    May your life together always be as sweet as this cake! Ab aage aapki 10 pyaari tasveerein hain...
+                </p>
+                <button onclick="goToPage(5)"
+                        class="px-6 py-2.5 rounded-full bg-rose-600 text-white text-xs sm:text-sm font-semibold shadow-md hover:bg-rose-700 transition inline-flex items-center gap-2">
+                    <span>See Our 10 Memories</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 5: 10-PHOTO SLIDER (img1.jpg to img10.jpg) WITH ROTATE-ON-SELECT
+    ====================================================================== -->
+    <section id="page5" class="page-section min-h-screen w-full flex-col items-center justify-center px-4 py-14">
+        <div class="glass-panel max-w-2xl w-full rounded-3xl p-6 sm:p-8 text-center">
+            <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="bg-pink-100 text-rose-700 px-3.5 py-1 rounded-full text-xs font-semibold">
+                    Photo <span id="photoCounter">1</span> / 10
+                </span>
+                <span id="photoFileBadge" class="bg-rose-50 text-rose-600 border border-rose-200 px-3 py-1 rounded-full text-[11px] font-mono">
+                    img1.jpg
+                </span>
+            </div>
+
+            <h2 class="font-script text-4xl sm:text-5xl text-rose-600 mb-1">
+                Our 10 Beautiful Memories
+            </h2>
+            <p class="text-xs sm:text-sm text-rose-800/80 mb-5">
+                Slide karein ya photo par click karke use <strong>Rotate</strong> karein ✨
+            </p>
+
+            <!-- Carousel Frame -->
+            <div class="relative flex items-center justify-center my-2">
+                <!-- Prev Button -->
+                <button onclick="slidePhoto(-1)" aria-label="Previous Photo"
+                        class="z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-rose-500 text-rose-600 hover:text-white shadow-lg border border-rose-200 flex items-center justify-center transition transform active:scale-90">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <!-- Rotatable Photo Card -->
+                <div id="photoTouchArea" class="photo-card-perspective mx-3 sm:mx-6 w-64 sm:w-80">
+                    <div id="rotatablePhotoCard" onclick="rotateCurrentPhoto()"
+                         class="photo-rotatable bg-white p-3 pb-5 rounded-2xl shadow-2xl border-2 border-pink-200">
+                        <div class="relative w-full h-64 sm:h-72 rounded-xl overflow-hidden bg-rose-50">
+                            <img id="currentGalleryImg" src="img1.jpg" alt="Shazii & Taboo Memory"
+                                 class="w-full h-full object-cover transition duration-500">
+                            <div class="absolute bottom-2 right-2 bg-black/50 backdrop-blur-sm text-white text-[10px] px-2.5 py-1 rounded-full">
+                                <i class="fa-solid fa-rotate mr-1"></i> Tap to Rotate
+                            </div>
+                        </div>
+                        <p id="currentGalleryCaption" class="font-serif-elegant italic text-rose-800 text-sm sm:text-base mt-3 font-medium">
+                            Memory Caption
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Next Button -->
+                <button onclick="slidePhoto(1)" aria-label="Next Photo"
+                        class="z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-rose-500 text-rose-600 hover:text-white shadow-lg border border-rose-200 flex items-center justify-center transition transform active:scale-90">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- 10 Pagination Dots -->
+            <div id="photoDots" class="flex items-center justify-center gap-1.5 my-5"></div>
+
+            <!-- Proceed to Page 6 -->
+            <button onclick="goToPage(6)"
+                    class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-500 to-pink-600 text-white font-semibold shadow-lg hover:shadow-xl transition transform hover:scale-105 inline-flex items-center gap-2">
+                <span>Check Sheraz's Love Meter</span>
+                <i class="fa-solid fa-heart-pulse"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 6: LOVE METER & 5 REASONS WHY I LOVE YOU
+    ====================================================================== -->
+    <section id="page6" class="page-section min-h-screen w-full flex-col items-center justify-center px-4 py-16">
+        <div class="glass-panel max-w-xl w-full rounded-3xl p-6 sm:p-8 text-center">
+            <span class="inline-block bg-pink-100 text-rose-700 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+                Tap the Heart to Measure ❤️
+            </span>
+            <h2 class="font-script text-4xl sm:text-5xl text-rose-600 mb-2">
+                How Much Does Shazii Love You?
+            </h2>
+            <p class="text-xs sm:text-sm text-rose-800/80 mb-5">
+                Dil par baar baar click karein aur dekhein meter kahan tak jaata hai!
+            </p>
+
+            <!-- Interactive Heart Button -->
+            <button onclick="boostLoveMeter()" id="loveMeterHeartBtn"
+                    class="w-24 h-24 rounded-full bg-gradient-to-br from-rose-500 to-pink-600 text-white text-4xl shadow-xl shadow-rose-400/50 hover:scale-110 active:scale-90 transition transform mx-auto flex items-center justify-center mb-4">
+                <i class="fa-solid fa-heart"></i>
+            </button>
+
+            <!-- Meter Bar -->
+            <div class="w-full bg-rose-100 h-5 rounded-full overflow-hidden p-1 border border-rose-200 mb-2">
+                <div id="loveMeterBar" class="h-full rounded-full bg-gradient-to-r from-pink-500 via-rose-500 to-red-600 transition-all duration-300" style="width: 20%;"></div>
+            </div>
+            <p id="loveMeterText" class="font-serif-elegant font-bold text-rose-700 text-base mb-5">
+                Love Level: 20% — Tap the heart!
+            </p>
+
+            <!-- Unlocked Sweet Reasons List -->
+            <div id="loveReasonsBox" class="text-left space-y-2 mb-6">
+                <div class="p-3 rounded-xl bg-white/80 border border-pink-200 text-xs sm:text-sm text-rose-900 flex items-center gap-2.5">
+                    <i class="fa-solid fa-circle-check text-rose-500"></i>
+                    <span>1. Tumhari masoom si muskurahat meri har pareshani khatam kar deti hai.</span>
+                </div>
+            </div>
+
+            <button onclick="goToPage(7)"
+                    class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl transition transform hover:scale-105 inline-flex items-center gap-2">
+                <span>Next: Pop Your Surprise Balloons</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 7: 4 BALLOONS ("CLICK THE BALLOON") -> REVEALS GIFT BOX
+    ====================================================================== -->
+    <section id="page7" class="page-section min-h-screen w-full flex-col items-center justify-center px-4 py-14">
+        <div class="max-w-2xl w-full text-center">
+            <!-- Top Hint -->
+            <div id="balloonHintBadge" class="inline-flex items-center gap-2 bg-white/90 text-rose-600 px-5 py-2 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md border border-pink-200 mb-3 animate-bounce">
+                <i class="fa-solid fa-hand-pointer"></i> Click the Balloon
+            </div>
+
+            <h2 class="font-script text-5xl sm:text-6xl text-rose-700 mb-2">
+                Pop a Balloon For Your Gift
+            </h2>
+            <p id="balloonSubtext" class="text-sm sm:text-base text-rose-900/80 mb-8">
+                Kisi bhi balloon par click karein — uske andar aapke liye ek khaas tohfa chhupa hai ❤️
+            </p>
+
+            <!-- 4 Floating Glossy Balloons -->
+            <div id="balloonsGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-xl mx-auto my-6">
+                <!-- Balloon 1 -->
+                <div class="balloon-container flex flex-col items-center" onclick="popBalloon(this)">
+                    <svg viewBox="0 0 100 140" class="w-24 sm:w-28 h-36 drop-shadow-xl">
+                        <defs>
+                            <radialGradient id="bGrad1" cx="35%" cy="30%" r="65%">
+                                <stop offset="0%" stop-color="#ffb3c6"/>
+                                <stop offset="55%" stop-color="#ff4d6d"/>
+                                <stop offset="100%" stop-color="#a4133c"/>
+                            </radialGradient>
+                        </defs>
+                        <path d="M50 96 Q45 118 53 138" stroke="#be123c" stroke-width="2" fill="none"/>
+                        <polygon points="46,96 54,96 50,89" fill="#c9184a"/>
+                        <ellipse cx="50" cy="48" rx="38" ry="44" fill="url(#bGrad1)"/>
+                        <ellipse cx="36" cy="30" rx="8" ry="14" transform="rotate(-25 36 30)" fill="rgba(255,255,255,0.45)"/>
+                        <text x="50" y="54" text-anchor="middle" font-size="20">❤️</text>
+                    </svg>
+                </div>
+
+                <!-- Balloon 2 -->
+                <div class="balloon-container flex flex-col items-center" onclick="popBalloon(this)">
+                    <svg viewBox="0 0 100 140" class="w-24 sm:w-28 h-36 drop-shadow-xl">
+                        <defs>
+                            <radialGradient id="bGrad2" cx="35%" cy="30%" r="65%">
+                                <stop offset="0%" stop-color="#fde68a"/>
+                                <stop offset="55%" stop-color="#f59e0b"/>
+                                <stop offset="100%" stop-color="#b45309"/>
+                            </radialGradient>
+                        </defs>
+                        <path d="M50 96 Q55 118 47 138" stroke="#b45309" stroke-width="2" fill="none"/>
+                        <polygon points="46,96 54,96 50,89" fill="#d97706"/>
+                        <ellipse cx="50" cy="48" rx="38" ry="44" fill="url(#bGrad2)"/>
+                        <ellipse cx="36" cy="30" rx="8" ry="14" transform="rotate(-25 36 30)" fill="rgba(255,255,255,0.45)"/>
+                        <text x="50" y="54" text-anchor="middle" font-size="20">💖</text>
+                    </svg>
+                </div>
+
+                <!-- Balloon 3 -->
+                <div class="balloon-container flex flex-col items-center" onclick="popBalloon(this)">
+                    <svg viewBox="0 0 100 140" class="w-24 sm:w-28 h-36 drop-shadow-xl">
+                        <defs>
+                            <radialGradient id="bGrad3" cx="35%" cy="30%" r="65%">
+                                <stop offset="0%" stop-color="#f5d0fe"/>
+                                <stop offset="55%" stop-color="#d946ef"/>
+                                <stop offset="100%" stop-color="#86198f"/>
+                            </radialGradient>
+                        </defs>
+                        <path d="M50 96 Q45 118 53 138" stroke="#86198f" stroke-width="2" fill="none"/>
+                        <polygon points="46,96 54,96 50,89" fill="#a21caf"/>
+                        <ellipse cx="50" cy="48" rx="38" ry="44" fill="url(#bGrad3)"/>
+                        <ellipse cx="36" cy="30" rx="8" ry="14" transform="rotate(-25 36 30)" fill="rgba(255,255,255,0.45)"/>
+                        <text x="50" y="54" text-anchor="middle" font-size="20">💝</text>
+                    </svg>
+                </div>
+
+                <!-- Balloon 4 -->
+                <div class="balloon-container flex flex-col items-center" onclick="popBalloon(this)">
+                    <svg viewBox="0 0 100 140" class="w-24 sm:w-28 h-36 drop-shadow-xl">
+                        <defs>
+                            <radialGradient id="bGrad4" cx="35%" cy="30%" r="65%">
+                                <stop offset="0%" stop-color="#fecdd3"/>
+                                <stop offset="55%" stop-color="#fb7185"/>
+                                <stop offset="100%" stop-color="#9f1239"/>
+                            </radialGradient>
+                        </defs>
+                        <path d="M50 96 Q55 118 47 138" stroke="#9f1239" stroke-width="2" fill="none"/>
+                        <polygon points="46,96 54,96 50,89" fill="#e11d48"/>
+                        <ellipse cx="50" cy="48" rx="38" ry="44" fill="url(#bGrad4)"/>
+                        <ellipse cx="36" cy="30" rx="8" ry="14" transform="rotate(-25 36 30)" fill="rgba(255,255,255,0.45)"/>
+                        <text x="50" y="54" text-anchor="middle" font-size="20">🌹</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Gift Box Appears Here When Balloon Pops -->
+            <div id="giftBoxStage" class="hidden gift-reveal-anim mt-6">
+                <div class="glass-panel max-w-md mx-auto rounded-3xl p-7 border-2 border-amber-300 shadow-2xl">
+                    <div onclick="goToPage(8)" class="cursor-pointer group">
+                        <div class="w-28 h-28 mx-auto rounded-3xl bg-gradient-to-br from-rose-500 via-pink-500 to-amber-500 text-white flex items-center justify-center text-6xl shadow-xl group-hover:scale-110 transition transform">
+                            <i class="fa-solid fa-gift"></i>
+                        </div>
+                        <h3 class="font-script text-4xl text-rose-700 mt-4">A Special Gift Box!</h3>
+                        <p class="text-xs sm:text-sm text-rose-800 mt-1 mb-5">
+                            Is gift box par click karein — iske andar aapke liye sabse pyaara Love Letter hai 💌
+                        </p>
+                        <button type="button"
+                                class="px-7 py-3 rounded-full bg-gradient-to-r from-rose-600 to-pink-500 text-white font-semibold shadow-lg inline-flex items-center gap-2">
+                            <span>Open Love Letter Gift</span>
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 8: THE GRAND LOVE & RECONCILIATION LETTER FROM SHERAZ
+    ====================================================================== -->
+    <section id="page8" class="page-section min-h-screen w-full flex-col items-center justify-center px-4 py-14">
+        <div class="max-w-2xl w-full">
+            <div class="glass-panel rounded-3xl p-6 sm:p-9 text-left border-2 border-rose-300 relative overflow-hidden">
+                <!-- Decorative Ribbon Header -->
+                <div class="flex items-center justify-between border-b border-rose-200 pb-4 mb-5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-600 text-white flex items-center justify-center text-2xl shadow-md">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <div>
+                            <span class="text-[11px] uppercase tracking-widest text-rose-500 font-bold">From Shazii's Heart</span>
+                            <h2 class="font-script text-3xl sm:text-4xl text-rose-700 leading-none">Meri Pyaari Taboo</h2>
+                        </div>
+                    </div>
+                    <span class="text-2xl animate-pulse">💍</span>
+                </div>
+
+                <!-- Deeply Touching Reconciliation & Anniversary Letter -->
+                <div class="letter-scroll max-h-[52vh] overflow-y-auto pr-2 space-y-3.5 text-sm sm:text-base leading-relaxed text-rose-950 font-serif-elegant">
+                    <p>
+                        <strong>Happy Anniversary, meri jaan!</strong> ❤️
+                    </p>
+                    <p>
+                        Aaj ka din meri zindagi ka sabse haseen din hai, kyunki is din tum meri zindagi mein aayin aur mere har khwab ko haqeeqat bana diya. Jab se tum meri humsafar bani ho, mere ghar aur mere dil mein sirf khushiyan hi khushiyan hain.
+                    </p>
+                    <p>
+                        Taboo, main jaanta hoon ke kabhi kabhi meri wajah se ya meri kisi nadani se tumhara dil dukh jaata hai aur tum naraz ho jaati ho. Aaj is pyaare se mauke par main apne poore dil se kehta hoon — <strong>I am truly sorry, meri jaan.</strong> Tumhari narazgi mujhse bilkul bardasht nahi hoti, kyunki tumhari muskurahat hi meri jeene ki wajah hai.
+                    </p>
+                    <p>
+                        Tum sirf meri biwi nahi ho, tum meri sabse achi dost, meri izzat, aur meri poori kainat ho. Main waada karta hoon ke main hamesha tumhara khayal rakhunga, tumhe har khushi dunga, aur har kadam par tumhare saath khada rahunga.
+                    </p>
+                    <p>
+                        Ab jaldi se muskura do aur apna saara gussa bhool jao... kyunki <strong>Shazii</strong> apni <strong>Taboo</strong> ke bina bilkul adhoora hai.
+                    </p>
+                    <div class="pt-3 text-right">
+                        <p class="text-rose-700 italic">Hamesha sirf tumhara,</p>
+                        <p class="font-script text-3xl text-rose-600 font-bold mt-1">Shazii ❤️</p>
+                    </div>
+                </div>
+
+                <!-- Footer Actions -->
+                <div class="mt-6 pt-4 border-t border-rose-200 flex flex-wrap items-center justify-between gap-3">
+                    <button onclick="triggerHeartShower()"
+                            class="px-5 py-2.5 rounded-full bg-pink-100 hover:bg-pink-200 text-rose-700 text-xs sm:text-sm font-semibold transition flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-rose-500"></i>
+                        <span>Send Love Shower</span>
+                    </button>
+
+                    <button onclick="goToPage(9)"
+                            class="px-6 py-2.5 rounded-full bg-rose-600 hover:bg-rose-700 text-white text-xs sm:text-sm font-semibold shadow-md transition flex items-center gap-2">
+                        <span>My Promises To You</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 9: INTERACTIVE PROMISE CARDS ("ACCEPT MY PROMISES")
+    ====================================================================== -->
+    <section id="page9" class="page-section min-h-screen w-full flex-col items-center justify-center px-4 py-16">
+        <div class="glass-panel max-w-2xl w-full rounded-3xl p-6 sm:p-8 text-center">
+            <span class="inline-block bg-rose-100 text-rose-700 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+                Tap Each Promise to Stamp ❤️
+            </span>
+            <h2 class="font-script text-4xl sm:text-5xl text-rose-600 mb-2">
+                Shazii's 4 Lifetime Promises
+            </h2>
+            <p class="text-xs sm:text-sm text-rose-800/80 mb-6">
+                Har waade par click karke use accept karein meri jaan:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-7 text-left">
+                <div onclick="togglePromise(this)" class="cursor-pointer p-4 rounded-2xl bg-white/85 border-2 border-pink-200 hover:border-rose-400 transition flex items-start justify-between gap-3">
+                    <div>
+                        <h4 class="font-serif-elegant font-bold text-rose-700 text-sm sm:text-base">1. Kabhi Naraz Nahi Rehne Dunga</h4>
+                        <p class="text-xs text-rose-900/80 mt-1">Chahe jitna bhi gussa ho, main hamesha pyar se manaunga.</p>
+                    </div>
+                    <span class="promise-badge text-xs font-bold px-2.5 py-1 rounded-full bg-rose-100 text-rose-600 shrink-0">Tap ❤️</span>
+                </div>
+
+                <div onclick="togglePromise(this)" class="cursor-pointer p-4 rounded-2xl bg-white/85 border-2 border-pink-200 hover:border-rose-400 transition flex items-start justify-between gap-3">
+                    <div>
+                        <h4 class="font-serif-elegant font-bold text-rose-700 text-sm sm:text-base">2. Hamesha Tumhari Khushi</h4>
+                        <p class="text-xs text-rose-900/80 mt-1">Tumhari har choti badi khwahish poori karne ki koshish karunga.</p>
+                    </div>
+                    <span class="promise-badge text-xs font-bold px-2.5 py-1 rounded-full bg-rose-100 text-rose-600 shrink-0">Tap ❤️</span>
+                </div>
+
+                <div onclick="togglePromise(this)" class="cursor-pointer p-4 rounded-2xl bg-white/85 border-2 border-pink-200 hover:border-rose-400 transition flex items-start justify-between gap-3">
+                    <div>
+                        <h4 class="font-serif-elegant font-bold text-rose-700 text-sm sm:text-base">3. Har Safar Saath</h4>
+                        <p class="text-xs text-rose-900/80 mt-1">Zindagi ke har mod par tumhara haath kabhi nahi chhodunga.</p>
+                    </div>
+                    <span class="promise-badge text-xs font-bold px-2.5 py-1 rounded-full bg-rose-100 text-rose-600 shrink-0">Tap ❤️</span>
+                </div>
+
+                <div onclick="togglePromise(this)" class="cursor-pointer p-4 rounded-2xl bg-white/85 border-2 border-pink-200 hover:border-rose-400 transition flex items-start justify-between gap-3">
+                    <div>
+                        <h4 class="font-serif-elegant font-bold text-rose-700 text-sm sm:text-base">4. Bepanah Mohabbat</h4>
+                        <p class="text-xs text-rose-900/80 mt-1">Har din tumse pehle se zyada pyar karunga, meri Queen.</p>
+                    </div>
+                    <span class="promise-badge text-xs font-bold px-2.5 py-1 rounded-full bg-rose-100 text-rose-600 shrink-0">Tap ❤️</span>
+                </div>
+            </div>
+
+            <button onclick="goToPage(10)"
+                    class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-500 to-pink-600 text-white font-semibold shadow-lg hover:shadow-xl transition transform hover:scale-105 inline-flex items-center gap-2">
+                <span>Final Page: One Last Question</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 10: GRAND FINALE & "MAAF KIYA? SMILE PLEASE!" CELEBRATION
+    ====================================================================== -->
+    <section id="page10" class="page-section min-h-screen w-full flex-col items-center justify-center px-4 py-16">
+        <div class="glass-panel max-w-xl w-full rounded-3xl p-7 sm:p-9 text-center border-2 border-rose-300">
+            <!-- Dual Photo Frame (img1.jpg & img2.jpg) -->
+            <div class="flex items-center justify-center gap-4 mb-5">
+                <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-4 border-white shadow-lg -rotate-6 bg-rose-100">
+                    <img id="finaleImg1" src="img1.jpg" alt="Shazii & Taboo 1" class="w-full h-full object-cover">
+                </div>
+                <div class="text-3xl text-rose-500 animate-bounce">❤️</div>
+                <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-4 border-white shadow-lg rotate-6 bg-rose-100">
+                    <img id="finaleImg2" src="img2.jpg" alt="Shazii & Taboo 2" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            <h2 class="font-script text-5xl sm:text-6xl text-rose-600 mb-2">
+                Forever &amp; Always
+            </h2>
+            <p class="font-serif-elegant text-base sm:text-lg font-bold text-rose-800 mb-2">
+                Shazii ❤️ Taboo
+            </p>
+            <p class="text-sm sm:text-base text-rose-900/85 mb-6">
+                Ab toh narazgi khatam ho gayi na meri jaan? Ek pyaari si smile de dein! 😊
+            </p>
+
+            <!-- Interactive Reconciliation Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-3 mb-6">
+                <button onclick="celebrateForgiveness()"
+                        class="px-7 py-3.5 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white font-bold shadow-xl hover:shadow-2xl transition transform hover:scale-105 flex items-center gap-2">
+                    <i class="fa-solid fa-face-smile-hearts"></i>
+                    <span>Haan, Maaf Kiya &amp; I Love You! ❤️</span>
+                </button>
+            </div>
+
+            <div id="finaleCelebrationMsg" class="hidden p-4 rounded-2xl bg-rose-100/90 border border-rose-300 text-rose-800 font-serif-elegant text-sm sm:text-base mb-5">
+                🎉 Yayyy! Happy Anniversary Meri Jaan Taboo! Tumhari muskurahat hi Shazii ki sabse badi jeet hai! 💖✨
+            </div>
+
+            <button onclick="resetExperience()"
+                    class="text-xs text-rose-600 hover:text-rose-800 underline font-medium inline-flex items-center gap-1">
+                <i class="fa-solid fa-rotate-left"></i>
+                <span>Replay From Lock Screen</span>
+            </button>
+        </div>
+    </section>
+
+    <script>
+        /* =====================================================================
+           1. FLOATING AMBIENT HEARTS GENERATOR
+        ===================================================================== */
+        function initFloatingHearts() {
+            const container = document.getElementById('heartsBg');
+            const icons = ['❤️', '💖', '💕', '🌸', '💗'];
+            for (let i = 0; i < 24; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'bg-heart';
+                heart.textContent = icons[i % icons.length];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (14 + Math.random() * 18) + 'px';
+                heart.style.animationDuration = (8 + Math.random() * 10) + 's';
+                heart.style.animationDelay = (Math.random() * 8) + 's';
+                container.appendChild(heart);
+            }
+        }
+
+        /* =====================================================================
+           2. TOAST NOTIFICATION HELPER (Never uses alert())
+        ===================================================================== */
+        let toastTimeout;
+        function showToast(msg) {
+            const box = document.getElementById('toastBox');
+            const text = document.getElementById('toastMessage');
+            text.textContent = msg;
+            box.classList.remove('opacity-0', 'translate-y-4');
+            box.classList.add('opacity-100', 'translate-y-0');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                box.classList.remove('opacity-100', 'translate-y-0');
+                box.classList.add('opacity-0', 'translate-y-4');
+            }, 3200);
+        }
+
+        /* =====================================================================
+           3. BACKGROUND AUDIO: PLAYS "song1.mp3" FROM LOCAL FOLDER (WITH FALLBACK)
+        ===================================================================== */
+        const bgAudioEl = document.getElementById('bg-music');
+        let audioCtx = null;
+        let isPlayingMusic = false;
+        let melodyInterval = null;
+        let useSynthFallback = false;
+
+        // If song1.mp3 is missing in the folder, seamlessly use gentle romantic music-box melody
+        bgAudioEl.addEventListener('error', () => {
+            useSynthFallback = true;
+        });
+
+        const romanticNotes = [
+            523.25, 659.25, 783.99, 1046.50, 987.77, 783.99, 659.25, 587.33,
+            493.88, 587.33, 783.99, 987.77, 880.00, 698.46, 587.33, 523.25
+        ];
+        let noteStep = 0;
+
+        function playRomanticNote(freq) {
+            if (!audioCtx) return;
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now);
+            gain.gain.setValueAtTime(0.0001, now);
+            gain.gain.exponentialRampToValueAtTime(0.08, now + 0.06);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.3);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(now);
+            osc.stop(now + 1.35);
+        }
+
+        function startSynthFallback() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            isPlayingMusic = true;
+            updateMusicUI();
+            if (!melodyInterval) {
+                playRomanticNote(romanticNotes[noteStep++ % romanticNotes.length]);
+                melodyInterval = setInterval(() => {
+                    if (isPlayingMusic) {
+                        playRomanticNote(romanticNotes[noteStep++ % romanticNotes.length]);
+                    }
+                }, 520);
+            }
+        }
+
+        function startBackgroundMusic() {
+            if (isPlayingMusic) return;
+
+            if (!useSynthFallback) {
+                bgAudioEl.play().then(() => {
+                    isPlayingMusic = true;
+                    updateMusicUI();
+                }).catch(() => {
+                    // Fallback if browser blocks or song1.mp3 isn't present yet
+                    startSynthFallback();
+                });
+            } else {
+                startSynthFallback();
+            }
+        }
+
+        function stopBackgroundMusic() {
+            isPlayingMusic = false;
+            bgAudioEl.pause();
+            if (melodyInterval) {
+                clearInterval(melodyInterval);
+                melodyInterval = null;
+            }
+            updateMusicUI();
+        }
+
+        function updateMusicUI() {
+            const label = document.getElementById('musicLabel');
+            const icon = document.getElementById('musicIcon');
+            if (isPlayingMusic) {
+                label.textContent = 'Pause Song';
+                icon.className = 'fa-solid fa-pause';
+            } else {
+                label.textContent = 'Play Song';
+                icon.className = 'fa-solid fa-music';
+            }
+        }
+
+        document.getElementById('musicToggleBtn').addEventListener('click', () => {
+            if (isPlayingMusic) {
+                stopBackgroundMusic();
+            } else {
+                startBackgroundMusic();
+            }
+        });
+
+        /* =====================================================================
+           4. NAVIGATION ACROSS ALL 10 PAGES
+        ===================================================================== */
+        function goToPage(pageNum) {
+            document.querySelectorAll('.page-section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+
+            const target = document.getElementById('page' + pageNum);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            document.getElementById('currentStepNum').textContent = pageNum;
+            document.getElementById('topProgressBar').style.width = (pageNum * 10) + '%';
+        }
+
+        /* =====================================================================
+           5. PAGE 1: MODERN PIN (0909) + BIOMETRIC FINGERPRINT SCANNER
+        ===================================================================== */
+        // Pre-filled with "1234" as requested
+        let enteredPin = ['1', '2', '3', '4'];
+        let isInitialDefault = true;
+        let isPinVerified = false;
+        let scanProgress = 0;
+        let scanTimer = null;
+
+        function renderPinBoxes() {
+            for (let i = 0; i < 4; i++) {
+                const box = document.getElementById('pin-box-' + i);
+                box.textContent = enteredPin[i] !== undefined ? enteredPin[i] : '•';
+                if (isPinVerified) {
+                    box.classList.add('verified');
+                } else {
+                    box.classList.remove('verified');
+                }
+            }
+        }
+
+        function pressKey(digit) {
+            if (!isPlayingMusic) startBackgroundMusic();
+            if (isPinVerified) return;
+
+            if (isInitialDefault) {
+                enteredPin = [];
+                isInitialDefault = false;
+            }
+
+            if (enteredPin.length < 4) {
+                enteredPin.push(digit);
+                renderPinBoxes();
+            }
+
+            if (enteredPin.length === 4) {
+                verifyPinCode();
+            }
+        }
+
+        function backspacePin() {
+            if (isPinVerified) return;
+            if (isInitialDefault) {
+                enteredPin = [];
+                isInitialDefault = false;
+            } else {
+                enteredPin.pop();
+            }
+            renderPinBoxes();
+        }
+
+        function clearPin() {
+            if (isPinVerified) return;
+            enteredPin = [];
+            isInitialDefault = false;
+            renderPinBoxes();
+        }
+
+        function verifyPinCode() {
+            const code = enteredPin.join('');
+            const card = document.getElementById('modernLockCard');
+
+            if (code === '0909') {
+                isPinVerified = true;
+                renderPinBoxes();
+                const sensor = document.getElementById('fingerprintSensor');
+                sensor.classList.remove('locked-sensor');
+                sensor.classList.add('ready-sensor');
+
+                document.getElementById('biometricStatus').innerHTML =
+                    '<span class="text-emerald-600 font-bold"><i class="fa-solid fa-check-circle mr-1"></i> Code Verified! Now Tap &amp; Hold Fingerprint Sensor</span>';
+                showToast('Code 0909 Verified! Now scan your fingerprint ❤️');
+            } else {
+                card.classList.remove('shake-animation');
+                void card.offsetWidth;
+                card.classList.add('shake-animation');
+                showToast('Wrong code! Enter 0909 💕');
+                setTimeout(() => {
+                    enteredPin = [];
+                    renderPinBoxes();
+                }, 450);
+            }
+        }
+
+        // Fingerprint Hold / Tap Scan Logic
+        function startFingerprintScan(e) {
+            if (e) e.preventDefault();
+            if (!isPlayingMusic) startBackgroundMusic();
+
+            if (!isPinVerified) {
+                showToast('Pehle keypad par 0909 code dalein! 🔐');
+                return;
+            }
+
+            const sensor = document.getElementById('fingerprintSensor');
+            sensor.classList.add('scanning');
+            document.getElementById('biometricStatus').textContent = 'Scanning Taboo\'s Heartbeat...';
+
+            clearInterval(scanTimer);
+            scanTimer = setInterval(() => {
+                scanProgress += 8;
+                document.getElementById('scanProgressBar').style.width = Math.min(scanProgress, 100) + '%';
+
+                if (scanProgress >= 100) {
+                    clearInterval(scanTimer);
+                    completeBiometricUnlock();
+                }
+            }, 60);
+        }
+
+        function stopFingerprintScan() {
+            if (scanProgress >= 100) return;
+            clearInterval(scanTimer);
+            const sensor = document.getElementById('fingerprintSensor');
+            sensor.classList.remove('scanning');
+        }
+
+        // Also allow a quick single tap on mobile/desktop to complete smoothly
+        function quickFingerprintTap() {
+            if (!isPinVerified || scanProgress >= 100) return;
+            const sensor = document.getElementById('fingerprintSensor');
+            sensor.classList.add('scanning');
+            clearInterval(scanTimer);
+            scanTimer = setInterval(() => {
+                scanProgress += 12;
+                document.getElementById('scanProgressBar').style.width = Math.min(scanProgress, 100) + '%';
+                if (scanProgress >= 100) {
+                    clearInterval(scanTimer);
+                    completeBiometricUnlock();
+                }
+            }, 50);
+        }
+
+        function completeBiometricUnlock() {
+            const sensor = document.getElementById('fingerprintSensor');
+            sensor.classList.remove('scanning', 'ready-sensor');
+            sensor.style.borderColor = '#10b981';
+            document.getElementById('fingerprintIcon').classList.remove('text-rose-600');
+            document.getElementById('fingerprintIcon').classList.add('text-emerald-600');
+            document.getElementById('biometricStatus').innerHTML =
+                '<span class="text-emerald-600 font-bold">Biometric Matched! Welcome Meri Jaan ❤️</span>';
+
+            confetti({
+                particleCount: 85,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff4d6d', '#ffb3c1', '#10b981', '#fbbf24']
+            });
+
+            setTimeout(() => {
+                goToPage(2);
+            }, 950);
+        }
+
+        /* =====================================================================
+           6. PAGE 3: FLIP CARDS INTERACTION
+        ===================================================================== */
+        function flipCard(cardElement) {
+            cardElement.classList.toggle('flipped');
+        }
+
+        /* =====================================================================
+           7. PAGE 4: CAKE CUTTING ANIMATION
+        ===================================================================== */
+        let isCakeCut = false;
+
+        function cutTheCake() {
+            if (isCakeCut) return;
+            isCakeCut = true;
+
+            const stage = document.getElementById('cakeStage');
+            const knife = document.getElementById('cakeKnife');
+            const banner = document.getElementById('cakeWishBanner');
+
+            knife.classList.add('knife-cutting');
+
+            setTimeout(() => {
+                stage.classList.add('cake-cut');
+                knife.style.opacity = '0';
+
+                confetti({
+                    particleCount: 95,
+                    spread: 80,
+                    origin: { y: 0.55 },
+                    colors: ['#ff4d6d', '#ff8fa3', '#fde047', '#ffffff']
+                });
+
+                showToast('Happy Anniversary Shazii & Taboo! 🎂❤️');
+
+                setTimeout(() => {
+                    banner.classList.remove('hidden');
+                }, 600);
+            }, 450);
+        }
+
+        /* =====================================================================
+           8. PAGE 5: 10-PHOTO SLIDER (img1.jpg .. img10.jpg) + ROTATE ON CLICK
+        ===================================================================== */
+        function createFallbackCardSvg(fileName, title, emoji) {
+            const svg = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+                    <defs>
+                        <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffe4e6"/>
+                            <stop offset="100%" stop-color="#fbcfe8"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="500" height="500" fill="url(#g)"/>
+                    <circle cx="250" cy="200" r="95" fill="rgba(255,255,255,0.45)"/>
+                    <text x="250" y="228" text-anchor="middle" font-size="85">${emoji}</text>
+                    <text x="250" y="348" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#881337">${title}</text>
+                    <text x="250" y="388" text-anchor="middle" font-family="monospace" font-size="18" fill="#be123c">Place "${fileName}" in folder</text>
+                </svg>
+            `;
+            return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+        }
+
+        const galleryItems = [
+            { file: 'img1.jpg', emoji: '💑', title: 'Memory #1', caption: '1. Jab pehli baar tumhe dekha, dil ne kaha bas yahi hai ❤️' },
+            { file: 'img2.jpg', emoji: '💍', title: 'Memory #2', caption: '2. Hamari zindagi ka sabse khoobsurat din — 0909 ✨' },
+            { file: 'img3.jpg', emoji: '😊', title: 'Memory #3', caption: '3. Tumhari muskurahat meri saari thakan mita deti hai 🌸' },
+            { file: 'img4.jpg', emoji: '🤝', title: 'Memory #4', caption: '4. Har safar haseen lagta hai jab tum saath hoti ho 💕' },
+            { file: 'img5.jpg', emoji: '🌙', title: 'Memory #5', caption: '5. Woh pyaari baatein aur tumhari meethi hansi 💫' },
+            { file: 'img6.jpg', emoji: '👑', title: 'Memory #6', caption: '6. Mere dil ki malika — meri pyaari Taboo 👑' },
+            { file: 'img7.jpg', emoji: '💖', title: 'Memory #7', caption: '7. Har guzarte din ke saath tumse mohabbat aur badhti hai ❤️' },
+            { file: 'img8.jpg', emoji: '🥂', title: 'Memory #8', caption: '8. Har choti khushi tumhare saath jashn ban jaati hai 🎉' },
+            { file: 'img9.jpg', emoji: '🕊️', title: 'Memory #9', caption: '9. Dua hai ke har janam mein mujhe sirf tum hi milo 🤲' },
+            { file: 'img10.jpg', emoji: '♾️', title: 'Memory #10', caption: '10. Forever & Always — Shazii ❤️ Taboo' }
+        ];
+
+        let currentPhotoIndex = 0;
+
+        function renderGallery() {
+            const img = document.getElementById('currentGalleryImg');
+            const caption = document.getElementById('currentGalleryCaption');
+            const counter = document.getElementById('photoCounter');
+            const badge = document.getElementById('photoFileBadge');
+            const card = document.getElementById('rotatablePhotoCard');
+
+            card.classList.remove('is-rotated');
+
+            const item = galleryItems[currentPhotoIndex];
+            img.onerror = function () {
+                this.onerror = null;
+                this.src = createFallbackCardSvg(item.file, item.title, item.emoji);
+            };
+            img.src = item.file;
+            caption.textContent = item.caption;
+            counter.textContent = currentPhotoIndex + 1;
+            badge.textContent = item.file;
+
+            const dotsContainer = document.getElementById('photoDots');
+            dotsContainer.innerHTML = '';
+            galleryItems.forEach((_, idx) => {
+                const dot = document.createElement('button');
+                dot.className = `h-2.5 rounded-full transition-all ${idx === currentPhotoIndex ? 'w-7 bg-rose-600' : 'w-2.5 bg-rose-300 hover:bg-rose-400'}`;
+                dot.setAttribute('aria-label', 'Go to photo ' + (idx + 1));
+                dot.onclick = () => {
+                    currentPhotoIndex = idx;
+                    renderGallery();
+                };
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function slidePhoto(step) {
+            currentPhotoIndex = (currentPhotoIndex + step + galleryItems.length) % galleryItems.length;
+            renderGallery();
+        }
+
+        function rotateCurrentPhoto() {
+            const card = document.getElementById('rotatablePhotoCard');
+            card.classList.toggle('is-rotated');
+        }
+
+        // Touch Swipe Support for Photo Slider
+        let touchStartX = 0;
+        const touchArea = document.getElementById('photoTouchArea');
+        touchArea.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        touchArea.addEventListener('touchend', (e) => {
+            const diff = e.changedTouches[0].screenX - touchStartX;
+            if (Math.abs(diff) > 40) {
+                slidePhoto(diff < 0 ? 1 : -1);
+            }
+        }, { passive: true });
+
+        /* =====================================================================
+           9. PAGE 6: LOVE METER & REASONS
+        ===================================================================== */
+        let loveMeterValue = 20;
+        const extraLoveReasons = [
+            '2. Tumhara khayal rakhne ka andaaz mujhe har roz tumhara deewana bana deta hai.',
+            '3. Jab tum thoda sa gussa hoti ho toh aur bhi zyada cute lagti ho ❤️',
+            '4. Tum mere ghar ki barkat aur meri zindagi ka sukoon ho.',
+            '5. Shazii ka dil sirf aur sirf Taboo ke naam se dhadakta hai! ♾️'
+        ];
+        let reasonIndex = 0;
+
+        function boostLoveMeter() {
+            loveMeterValue = Math.min(loveMeterValue + 20, 100);
+            const bar = document.getElementById('loveMeterBar');
+            const text = document.getElementById('loveMeterText');
+            const box = document.getElementById('loveReasonsBox');
+
+            bar.style.width = loveMeterValue + '%';
+
+            if (reasonIndex < extraLoveReasons.length) {
+                const div = document.createElement('div');
+                div.className = 'p-3 rounded-xl bg-white/80 border border-pink-200 text-xs sm:text-sm text-rose-900 flex items-center gap-2.5 animate-fadeIn';
+                div.innerHTML = `<i class="fa-solid fa-circle-check text-rose-500"></i><span>${extraLoveReasons[reasonIndex]}</span>`;
+                box.appendChild(div);
+                reasonIndex++;
+            }
+
+            if (loveMeterValue >= 100) {
+                text.textContent = 'Love Level: ∞% (Unlimited & Forever!) 💖';
+                confetti({ particleCount: 60, spread: 60, origin: { y: 0.6 } });
+            } else {
+                text.textContent = `Love Level: ${loveMeterValue}% — Keep tapping! 💕`;
+            }
+        }
+
+        /* =====================================================================
+           10. PAGE 7: POP BALLOONS -> REVEAL GIFT BOX
+        ===================================================================== */
+        let balloonPopped = false;
+
+        function popBalloon(balloonEl) {
+            if (balloonPopped) return;
+            balloonPopped = true;
+
+            balloonEl.classList.add('balloon-popped');
+
+            confetti({
+                particleCount: 120,
+                spread: 90,
+                origin: { y: 0.5 },
+                colors: ['#ff4d6d', '#fb7185', '#fde047', '#ffffff', '#e879f9']
+            });
+
+            setTimeout(() => {
+                document.getElementById('balloonsGrid').classList.add('hidden');
+                document.getElementById('balloonHintBadge').classList.add('hidden');
+                document.getElementById('balloonSubtext').classList.add('hidden');
+                document.getElementById('giftBoxStage').classList.remove('hidden');
+            }, 420);
+        }
+
+        /* =====================================================================
+           11. PAGE 9 & 10: PROMISES & FINALE CELEBRATION
+        ===================================================================== */
+        function togglePromise(cardEl) {
+            cardEl.classList.toggle('bg-rose-50');
+            cardEl.classList.toggle('border-rose-500');
+            const badge = cardEl.querySelector('.promise-badge');
+            if (cardEl.classList.contains('border-rose-500')) {
+                badge.textContent = 'Accepted ✅';
+                badge.className = 'promise-badge text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 shrink-0';
+            } else {
+                badge.textContent = 'Tap ❤️';
+                badge.className = 'promise-badge text-xs font-bold px-2.5 py-1 rounded-full bg-rose-100 text-rose-600 shrink-0';
+            }
+        }
+
+        function celebrateForgiveness() {
+            document.getElementById('finaleCelebrationMsg').classList.remove('hidden');
+            triggerHeartShower();
+            setTimeout(triggerHeartShower, 600);
+        }
+
+        function triggerHeartShower() {
+            confetti({
+                particleCount: 110,
+                spread: 100,
+                origin: { y: 0.6 },
+                colors: ['#ff0a54', '#ff477e', '#ff7096', '#fbbf24', '#ffffff']
+            });
+            showToast('Happy Anniversary Shazii & Taboo! ❤️');
+        }
+
+        function resetExperience() {
+            // Reset Dual Lock
+            enteredPin = ['1', '2', '3', '4'];
+            isInitialDefault = true;
+            isPinVerified = false;
+            scanProgress = 0;
+            renderPinBoxes();
+            const sensor = document.getElementById('fingerprintSensor');
+            sensor.className = 'fingerprint-pad locked-sensor';
+            sensor.style.borderColor = '';
+            document.getElementById('fingerprintIcon').className = 'fa-solid fa-fingerprint text-5xl text-rose-600 transition-colors duration-300';
+            document.getElementById('scanProgressBar').style.width = '0%';
+            document.getElementById('biometricStatus').innerHTML =
+                '<i class="fa-solid fa-lock mr-1"></i> Enter PIN <strong>0909</strong> to activate Fingerprint Sensor';
+
+            // Reset Cake
+            isCakeCut = false;
+            document.getElementById('cakeStage').classList.remove('cake-cut');
+            const knife = document.getElementById('cakeKnife');
+            knife.classList.remove('knife-cutting');
+            knife.style.opacity = '1';
+            document.getElementById('cakeWishBanner').classList.add('hidden');
+
+            // Reset Gallery
+            currentPhotoIndex = 0;
+            renderGallery();
+
+            // Reset Balloons
+            balloonPopped = false;
+            document.querySelectorAll('.balloon-container').forEach(b => b.classList.remove('balloon-popped'));
+            document.getElementById('balloonsGrid').classList.remove('hidden');
+            document.getElementById('balloonHintBadge').classList.remove('hidden');
+            document.getElementById('balloonSubtext').classList.remove('hidden');
+            document.getElementById('giftBoxStage').classList.add('hidden');
+
+            // Reset Finale
+            document.getElementById('finaleCelebrationMsg').classList.add('hidden');
+
+            goToPage(1);
+        }
+
+        // Initialize on load
+        window.onload = function () {
+            initFloatingHearts();
+            renderPinBoxes();
+            renderGallery();
+
+            // Setup graceful fallbacks for finale img1.jpg and img2.jpg
+            const f1 = document.getElementById('finaleImg1');
+            const f2 = document.getElementById('finaleImg2');
+            f1.onerror = function () { this.onerror = null; this.src = createFallbackCardSvg('img1.jpg', 'Shazii', '🤴'); };
+            f2.onerror = function () { this.onerror = null; this.src = createFallbackCardSvg('img2.jpg', 'Taboo', '👸'); };
+        };
+    </script>
+</body>
+</html>
